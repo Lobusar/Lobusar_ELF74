@@ -24,10 +24,20 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <inttypes.h>
+
+#include "inc/hw_types.h"
+#include "inc/hw_gpio.h"
 #include "inc/hw_memmap.h"
+
+#include "driverlib/pin_map.h"
 #include "driverlib/debug.h"
 #include "driverlib/gpio.h"
 #include "driverlib/sysctl.h"
+#include "driverlib/systick.h"
+#include "driverlib/interrupt.h"
+
 
 
 //*****************************************************************************
@@ -53,6 +63,14 @@ __error__(char *pcFilename, uint32_t ui32Line)
 }
 #endif
 
+volatile uint32_t g_ui32Count = 0; //initialize counter for seconds
+
+void SysTickIntHandler(void){    //Add counts
+    g_ui32Count++;
+}
+
+
+
 //*****************************************************************************
 //
 // Blink the on-board LED.
@@ -60,54 +78,49 @@ __error__(char *pcFilename, uint32_t ui32Line)
 //*****************************************************************************
 int
 main(void)
+
 {
-    volatile uint32_t ui32Loop;
-
-    //
-    // Enable the GPIO port that is used for the on-board LED.
-    //
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
-
-    //
-    // Check if the peripheral access is enabled.
-    //
-    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION))
-    {
-    }
-
-    //
-    // Enable the GPIO pin for the LED (PN0).  Set the direction as output, and
-    // enable the GPIO pin for digital function.
-    //
+    volatile uint32_t ui32Loop;       
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);  // Check if the peripheral access is enabled.
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPION)){}
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ);// Check if the peripheral access is enabled.
+    while(!SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOJ)){}  // Enable the GPIO pin for the LED (PN0).  Set the direction as output, and enable the GPIO pin for digital function.
     GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
-
-    //
-    // Loop forever.
-    //
-    while(1)
+    GPIOPinTypeGPIOInput(GPIO_PORTJ_BASE, GPIO_PIN_0);
+    GPIOPadConfigSet(GPIO_PORTJ_BASE ,GPIO_PIN_0,GPIO_STRENGTH_2MA,GPIO_PIN_TYPE_STD_WPU);
+    
+    
+    // initialization
+    uint32_t ui32Time=0;
+    uint32_t value=0;
+    IntMasterEnable();
+    SysTickIntRegister(SysTickIntHandler);  
+    SysTickPeriodSet(20000000);  //set board Period
+    SysTickIntEnable();
+    SysTickEnable();
+    g_ui32Count=0; //set second counter to 0
+    
+    //start game
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0x0); //turn off the led
+    while(g_ui32Count<24){} //1 second counter
+    GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0); //turn on the led
+    value= GPIOPinRead(GPIO_PORTJ_BASE,GPIO_PIN_0);
+    ui32Time = SysTickValueGet();
+    g_ui32Count=0;
+    
+    // time check
+    while(value==1 && g_ui32Count<72)//3 second counter
     {
-        //
-        // Turn on the LED.
-        //
-        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0);
-
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
-
-        //
-        // Turn off the LED.
-        //
-        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0x0);
-
-        //
-        // Delay for a bit.
-        //
-        for(ui32Loop = 0; ui32Loop < 200000; ui32Loop++)
-        {
-        }
+    value= GPIOPinRead(GPIO_PORTJ_BASE,GPIO_PIN_0);     
     }
+    
+    //calculation
+    uint32_t reaction_time= SysTickValueGet()-ui32Time + 20000000*g_ui32Count;
+    
+    //result
+    if(g_ui32Count<72)
+    printf("Reaction Time: %.4f secs \n", (reaction_time*0.00000000233));
+    
+    else
+    printf("Fail \n");
 }
