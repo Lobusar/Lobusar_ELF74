@@ -1,0 +1,71 @@
+ THUMB
+
+  PUBLIC EightBitHistogram
+  SECTION .text: CODE
+  
+fillHistogram
+
+;Pega a posição inicial do vetor que esta em R9
+  MOV R3, R9
+ 
+;Lê o valor atual da imagem e aumenta R2 = R2 +1 para avançar um pixel
+  LDRB R8, [R2], #1
+;Dobra o valor de R8, pois o vetor do histograma está de 16 em 16 bits, e não 8
+  ADD R8, R8
+  
+;Lê o valor atual na posição do vetor e adiciona um
+  LDR R10, [R3, R8]
+  ADD R10, #1
+  
+;Incrementa a posição do vetor no número do pixel correspondente e guarda o valor atualizado
+  ADD R3, R8
+  STR R10, [R3]
+  
+;Adiciona 1 em R7 e compara se chegou no final da imagem (R6)
+  ADD R7, #1
+  CMP R7, R6
+  
+  BNE fillHistogram
+  BX LR
+   
+newHistogram
+ ; Vai pegando os valores de 2 em 2 bytes e colocando 0 até chegar no final do vetor
+  STR R8, [R3], #2
+  ADD R7, #1
+  CMP R7, #256
+  
+  BNE newHistogram
+  
+  BX LR 
+  
+EightBitHistogram
+;Guarda em R6 o tamanho da imagen
+    MUL R6, R0, R1 
+;Guarda em R9 a posição inicial do vetor
+    MOV R9, R3
+    
+;Compara se a imagem é maior do que 64k e se for retorna 0
+    CMP R6, #65536
+    ITT GT
+      MOVGT R0, #0
+      BXGT LR
+      
+;Prepara os registradores e zera o vetor
+    MOV R7, #0
+    MOV R8, #0
+    PUSH {LR}
+    BL newHistogram
+    POP {LR}
+    
+;Zera o R7 e preenche o vetor
+    MOV R7, #0
+    PUSH {LR}
+    BL fillHistogram
+    POP {LR}
+    
+;Guarda o tamanho da imagem em R0 e retorna
+    MOV R0, R6
+      
+    BX LR
+	
+  END
