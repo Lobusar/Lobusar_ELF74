@@ -63,7 +63,7 @@ int main()
  
   buffer_position = 0;
   buffercheck = 0;
-  uint8_t *charIO; //to modify the  
+  uint8_t *charIO; //to modify the character 
 
   while(1){
 
