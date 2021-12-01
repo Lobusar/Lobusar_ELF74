@@ -5,65 +5,56 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\..\Lab2\src\cmsis_version.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\pin_map.h</file>
             <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
+            <file>$PROJ_DIR$\..\Lab2\src\cmsis_version.h</file>
+            <file>$PROJ_DIR$\..\Lab2\src\startup_TM4C1294.s</file>
             <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\uart.h</file>
-            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\Source\main.o</file>
-            <file>$PROJ_DIR$\..\Lab2\src\core_cm4.h</file>
-            <file>$PROJ_DIR$\..\Lab2\src\cmsis_compiler.h</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a</file>
+            <file>$PROJ_DIR$\..\Lab2\src\system_TM4C1294.c</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\pin_map.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
             <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
-            <file>$PROJ_DIR$\Debug\List\Lab4.map</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
             <file>$PROJ_DIR$\..\Lab2\src\system_TM4C1294.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$PROJ_DIR$\..\Lab2\src\cmsis_iccarm.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
             <file>$TOOLKIT_DIR$\inc\c\inttypes.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Source\startup_TM4C1294.o.rsp</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
             <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\gpio.h</file>
             <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C1294NC.icf</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\Source\startup_TM4C1294.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\Source\startup_TM4C1294.o.rsp</file>
             <file>$PROJ_DIR$\Debug\Exe\Lab4.out</file>
-            <file>$PROJ_DIR$\Debug\Obj\Source\system_TM4C1294.o</file>
             <file>$PROJ_DIR$\..\Lab2\src\TM4C1294NCPDT.h</file>
+            <file>$PROJ_DIR$\..\Lab2\src\cmsis_compiler.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Source\system_TM4C1294.o</file>
+            <file>$PROJ_DIR$\..\Lab2\src\core_cm4.h</file>
+            <file>$PROJ_DIR$\Debug\List\Lab4.map</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
             <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\interrupt.h</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\..\Lab2\src\system_TM4C1294.c</file>
-            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\ewarm\Exe\driverlib.a</file>
-            <file>$PROJ_DIR$\..\Lab2\src\startup_TM4C1294.s</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\inc\hw_memmap.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Source\startup_TM4C1294.o</file>
+            <file>$PROJ_DIR$\..\..\TivaWare_C_Series-2.2.0.295\driverlib\sysctl.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\Source\main.o</file>
+            <file>$PROJ_DIR$\..\Lab2\src\cmsis_iccarm.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C1294NC.icf</file>
         </outputs>
         <file>
-            <name>[ROOT_NODE]</name>
+            <name>$PROJ_DIR$\..\Lab2\src\startup_TM4C1294.s</name>
             <outputs>
                 <tool>
-                    <name>ILINK</name>
-                    <file> 11 29</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Debug\Exe\Lab4.out</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 11</file>
+                    <name>AARM</name>
+                    <file> 31</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>ILINK</name>
-                    <file> 23 14 10 17 22 7 27 30 35</file>
+                    <name>AARM</name>
+                    <file> 14</file>
                 </tool>
             </inputs>
         </file>
@@ -72,13 +63,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 7</file>
+                    <file> 33</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 16 19 2 4 20 25 24 13 1 21 32 3 15 5 6</file>
+                    <file> 28 29 9 0 13 11 35 22 7 16 27 8 32 3 30</file>
                 </tool>
             </inputs>
         </file>
@@ -87,28 +78,37 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 30</file>
+                    <file> 23</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 16 19 2 26 24 13 1 31 9 18 0 8 12</file>
+                    <file> 28 29 9 18 35 22 7 20 21 34 1 24 12</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\Lab2\src\startup_TM4C1294.s</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>AARM</name>
-                    <file> 27</file>
+                    <name>ILINK</name>
+                    <file> 25 19</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\Lab4.out</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 25</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
-                    <name>AARM</name>
-                    <file> 28</file>
+                    <name>ILINK</name>
+                    <file> 36 15 10 26 17 33 31 23 5</file>
                 </tool>
             </inputs>
         </file>

@@ -22,6 +22,9 @@
         <path>$WS_DIR$\Lab5\Lab5.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\Lab6\Lab6.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\..\ThreadX\ports\cortex_m4\iar\example_build\tx.ewp</path>
     </project>
     <batchBuild />
